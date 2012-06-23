@@ -1,0 +1,11 @@
+[Unit]
+Description=settings daemon for gnome
+
+[Service]
+Type=dbus
+BusName=org.gnome.GConf
+ExecStart=/usr/libexec/gconfd-2
+
+[Install]
+WantedBy=gnome.target
+Alias=dbus-org.gnome.GConf.service

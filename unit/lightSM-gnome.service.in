@@ -1,0 +1,11 @@
+[Unit]
+Description=drop-in replacement for gnome-session-manager
+
+[Service]
+Type=dbus
+BusName=org.gnome.SessionManager
+ExecStart=@CMAKE_INSTALL_FULL_LIBEXECDIR@/lightSM-gnome
+
+[Install]
+WantedBy=gnome.target
+Alias=dbus-org.gnome.SessionManager.service

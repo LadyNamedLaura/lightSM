@@ -1,0 +1,9 @@
+[Unit]
+Description=X11 server
+
+[Service]
+Type=forking
+ExecStart=@CMAKE_INSTALL_FULL_LIBEXECDIR@/lightSM-x11
+
+[Install]
+WantedBy=graphical.target

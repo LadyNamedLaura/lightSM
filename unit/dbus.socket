@@ -1,0 +1,5 @@
+[Unit]
+Description=dbus session bus
+
+[Socket]
+ListenStream=%t/dbus/user_bus_socket

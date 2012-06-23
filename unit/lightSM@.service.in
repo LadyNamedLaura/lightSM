@@ -1,0 +1,9 @@
+[Unit]
+Description=Graphical session for %I
+
+[Service]
+Type=notify
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/lightSM -vu %I
+
+[Install]
+WantedBy=graphical.target

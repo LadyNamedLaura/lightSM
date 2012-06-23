@@ -1,0 +1,56 @@
+lightSM light graphical session manager
+
+DETAILS:
+    lightSM is a graphical session manager build around systemd.
+    it is made up out of 3 components:
+    - the main daemon:
+        Does the reparation for the Xserver and sets up the pam session.
+        This daemon needs to be run as root to be able to set up the session.
+    - the Xorg wrapper:
+        launches the Xserver and exits when X is ready to receive connections.
+        This daemon gets run as a user service within systemd (X11.service)
+    - an optional gnome support binary
+        this binary alows clean logout/shutdown/reboot from within gnome-shell
+
+BUILDING:
+    cmake .;make;make install
+    cmake build options:
+        GNOME (use cmake -DGNOME=yes)
+            also build gnome specific stuff
+        MISC_UNIT (use cmake -DMISC_UNIT=yes)
+            install some user service units usefull for a graphical session.
+            units included:
+            pulseaudio.service
+            gnome-settings-daemon.service*
+            gconf.service*
+
+    use ccmake to see all options
+
+    the main daemon is ${PREFIX}/bin/lightSM
+    the x11 wrapper is ${PREFIX}/libexec/lightSM-x11
+    the gnome binary is ${PREFIX}/libexec/lightSM-gnome
+
+    installed units:
+        system/lightSM@.service
+        user/X11.service
+        user/gnome.target*
+        user/lightSM-gnome.service*
+        user/gnome-shell.service*
+
+    *: only installed in when GNOME is specified
+
+GITHUB:
+    https://github.com/SimonPe/lightSM
+
+AUTHOR:
+    Simon Peeters
+
+LICENSE:
+    GPLv2.0+
+
+REQUIREMENTS:
+    systemd (tested with version 185)
+    dbus with bug 50962 fixed.
+        see (https://bugs.freedesktop.org/show_bug.cgi?id=50962) for a patch
+    Xorg
+    gnome-shell (optional)

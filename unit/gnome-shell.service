@@ -1,0 +1,13 @@
+[Unit]
+Description=gnome shell
+Wants=X11.service
+After=X11.service
+
+[Service]
+Type=dbus
+BusName=org.gnome.Shell
+ExecStart=/usr/bin/gnome-shell
+
+[Install]
+WantedBy=gnome.target
+Alias=dbus-org.gnome.Shell.service

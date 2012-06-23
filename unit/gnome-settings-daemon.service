@@ -1,0 +1,13 @@
+[Unit]
+Description=settings daemon for gnome
+Wants=X11.service
+After=X11.service
+
+[Service]
+Type=dbus
+BusName=org.gnome.SettingsDaemon
+ExecStart=/usr/libexec/gnome-settings-daemon
+
+[Install]
+WantedBy=gnome.target
+Alias=dbus-org.gnome.SettingsDaemon.service

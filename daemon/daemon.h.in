@@ -1,0 +1,34 @@
+#ifndef DEFS_H
+#define DEFS_H
+
+#define _GNU_SOURCE
+#define NAME "@PROJECT_NAME@"
+#define SYSTEMD_PATH "@SYSTEMD_PATH@"
+#define VERSION "@VERSION@"
+
+#include "opt.h"
+
+#include <syslog.h>
+#include <pwd.h>
+#include <limits.h>
+#include <errno.h>
+
+struct xserver {
+	int ttynum;
+	char displaydev[12];
+	int displaynum;
+	char displayname[5];
+	char cmdenv[PATH_MAX];
+};
+
+int lprintf(int prio, const char* fmt, ...);
+int session_setup(struct passwd* pw, struct xserver *server);
+int session_switch_user(struct passwd* pass, struct xserver *server);
+void session_cleanup();
+int prepare_x(struct xserver* server, struct passwd* pw);
+int systemd_notify_ready(const char *address);
+
+#define ESUCCESS       0
+#define EPAM           201
+
+#endif

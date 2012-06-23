@@ -1,0 +1,6 @@
+[Unit]
+Description=gnome desktop
+Wants=gnome-shell.service pulseaudio.service
+
+[Install]
+WantedBy=default.target

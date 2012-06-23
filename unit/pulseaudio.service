@@ -1,0 +1,11 @@
+[Unit]
+Description=Pulseaudio sound server
+
+[Service]
+Type=dbus
+BusName=org.pulseaudio.Server
+ExecStart=/usr/bin/pulseaudio
+
+[Install]
+WantedBy=default.target
+Alias=dbus-org.pulseaudio.Server.service
