@@ -12,6 +12,14 @@ DETAILS:
     - an optional gnome support binary
         this binary alows clean logout/shutdown/reboot from within gnome-shell
 
+    The code in this program is majorly inspired by:
+    - nodm (this is actually a fork/adaption of an unfinished rewrite of nodm)
+    - user-session by Auke Kok
+    - various tutorials and man page examples
+
+    Even though this programs functionality is comparable to user-session,
+    it was mostly written from scratch without knowledge about the existence of user-session.
+
 BUILDING:
     cmake .;make;make install
     cmake build options:
